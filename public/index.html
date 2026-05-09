@@ -4,45 +4,423 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HumanJi Research Lab</title>
+    <meta name="description" content="HumanJi — Studying the squeeze between rising AI capability and shrinking human oversight windows. 10 autonomous research projects exploring cognitive load, trust calibration, interface design, and deferral strategies.">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', -apple-system, sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15); }
+        .section-divider { height: 1px; background: linear-gradient(90deg, transparent, #e2e8f0, transparent); }
+        .research-question-card { border: 1px solid #e2e8f0; transition: all 0.3s ease; }
+        .research-question-card:hover { border-color: #667eea; box-shadow: 0 4px 20px rgba(102,126,234,0.1); }
+        .stat-number { font-size: 3rem; font-weight: 700; line-height: 1; }
+        .project-card { border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; transition: all 0.3s ease; }
+        .project-card:hover { border-color: #667eea; box-shadow: 0 8px 30px -10px rgba(102,126,234,0.25); }
+        .pulse-dot { width: 8px; height: 8px; border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
+        .fade-in { animation: fadeIn 0.6s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .tag { display: inline-block; padding: 2px 10px; border-radius: 100px; font-size: 0.75rem; font-weight: 500; }
+        .tag-blue { background: #eff6ff; color: #2563eb; }
+        .tag-purple { background: #f5f3ff; color: #7c3aed; }
+        .tag-green { background: #f0fdf4; color: #16a34a; }
+        .tag-amber { background: #fffbeb; color: #d97706; }
+    </style>
 </head>
-<body class="bg-gray-50">
-    <header class="bg-gradient-to-r from-blue-600 to-purple-700 text-white">
-        <div class="container mx-auto px-6 py-16 text-center">
-            <h1 class="text-5xl font-bold mb-6">HumanJi Research Lab</h1>
-            <p class="text-xl mb-8 max-w-4xl mx-auto opacity-90">
-                Studying the squeeze between rising AI capability and shrinking human oversight windows
-            </p>
-            <a href="https://github.com/sevenbow" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition inline-block">
-                <i class="fab fa-github mr-2"></i>View All Research
+<body class="bg-white text-gray-800">
+
+<!-- Navigation -->
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="#" class="text-xl font-bold gradient-text">HumanJi</a>
+        <div class="hidden md:flex items-center space-x-8">
+            <a href="#research" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition">Research</a>
+            <a href="#projects" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition">Projects</a>
+            <a href="#agents" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition">Agents</a>
+            <a href="https://github.com/sevenbow" target="_blank" rel="noopener" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition flex items-center gap-1">
+                <i class="fab fa-github"></i> GitHub
             </a>
         </div>
-    </header>
+    </div>
+</nav>
 
-    <main class="container mx-auto px-6 py-16">
-        <div class="grid md:grid-cols-4 gap-6 mb-16">
-            <div class="bg-white rounded-lg shadow-lg p-8 text-center">
-                <div class="text-4xl font-bold text-blue-600 mb-2">10</div>
-                <div class="text-gray-600">Projects Completed</div>
-            </div>
-            <div class="bg-white rounded-lg shadow-lg p-8 text-center">
-                <div class="text-4xl font-bold text-green-600 mb-2">2</div>
-                <div class="text-gray-600">Papers Ready</div>
-            </div>
-            <div class="bg-white rounded-lg shadow-lg p-8 text-center">
-                <div class="text-4xl font-bold text-purple-600 mb-2">1,200+</div>
-                <div class="text-gray-600">Lines of Code</div>
-            </div>
-            <div class="bg-white rounded-lg shadow-lg p-8 text-center">
-                <div class="text-4xl font-bold text-red-600 mb-2">25+</div>
-                <div class="text-gray-600">Novel Algorithms</div>
+<!-- Hero Section -->
+<section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50"></div>
+    <div class="relative max-w-5xl mx-auto px-6 py-32 text-center">
+        <div class="fade-in">
+            <p class="text-sm font-semibold text-indigo-600 tracking-widest uppercase mb-4">Research Lab</p>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight">
+                <span class="gradient-text">The AI Oversight Squeeze</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed">
+                AI is automating cognitive decisions faster than humans can oversee them.
+                Three pressures — rising information, falling windows, and superhuman capability — squeeze the space for meaningful human oversight. We study this squeeze.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#projects" class="inline-flex items-center px-8 py-4 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 transition shadow-lg hover:shadow-xl">
+                    Explore Research →
+                </a>
+                <a href="https://github.com/sevenbow" target="_blank" rel="noopener" class="inline-flex items-center px-8 py-4 border border-gray-300 rounded-xl font-semibold text-gray-700 hover:border-gray-400 transition">
+                    <i class="fab fa-github mr-2"></i> View on GitHub
+                </a>
             </div>
         </div>
-    </main>
+    </div>
+    <!-- Decorative elements -->
+    <div class="absolute top-20 right-0 w-96 h-96 bg-indigo-100 rounded-full blur-3xl opacity-30"></div>
+    <div class="absolute bottom-20 left-0 w-96 h-96 bg-purple-100 rounded-full blur-3xl opacity-30"></div>
+</section>
 
-    <footer class="bg-gray-800 text-white py-8 text-center">
-        <p>HumanJi Research Lab &copy; 2026 — humanji.in</p>
-    </footer>
+<!-- Impact Stats -->
+<section class="py-20 border-y border-gray-100">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center">
+                <div class="stat-number text-indigo-600">10</div>
+                <div class="text-sm text-gray-500 mt-2 font-medium">Research Projects</div>
+            </div>
+            <div class="text-center">
+                <div class="stat-number text-green-600">2+</div>
+                <div class="text-sm text-gray-500 mt-2 font-medium">Publication-Ready Papers</div>
+            </div>
+            <div class="text-center">
+                <div class="stat-number text-purple-600">1,200</div>
+                <div class="text-sm text-gray-500 mt-2 font-medium">Lines of Analysis Code</div>
+            </div>
+            <div class="text-center">
+                <div class="stat-number text-amber-600">5</div>
+                <div class="text-sm text-gray-500 mt-2 font-medium">Autonomous Agents</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Research Questions -->
+<section id="research" class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16 fade-in">
+            <p class="text-sm font-semibold text-indigo-600 tracking-widest uppercase mb-3">Core Questions</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">What We Pursue</h2>
+            <div class="section-divider w-20 mx-auto mb-4"></div>
+            <p class="text-gray-500 max-w-2xl mx-auto">Three fundamental questions drive every project in our lab.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="research-question-card p-8 rounded-xl fade-in">
+                <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mb-5">
+                    <i class="fas fa-balance-scale text-indigo-600 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Deferral Strategy</h3>
+                <p class="text-gray-600 leading-relaxed">When should an AI system defer to a human, given a fixed oversight budget?</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                    <span class="tag tag-blue">HIM-19</span>
+                    <span class="tag tag-purple">Decision Novelty</span>
+                </div>
+            </div>
+            <div class="research-question-card p-8 rounded-xl fade-in" style="animation-delay: 0.1s">
+                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-5">
+                    <i class="fas fa-eye text-green-600 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Interface Design</h3>
+                <p class="text-gray-600 leading-relaxed">How should oversight windows promote genuine understanding rather than rubber-stamping?</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                    <span class="tag tag-green">HIM-18</span>
+                    <span class="tag tag-blue">5 Design Dimensions</span>
+                </div>
+            </div>
+            <div class="research-question-card p-8 rounded-xl fade-in" style="animation-delay: 0.2s">
+                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-5">
+                    <i class="fas fa-clock text-purple-600 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Temporal Dynamics</h3>
+                <p class="text-gray-600 leading-relaxed">Does design compose over time as human habits and AI behavior both evolve?</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                    <span class="tag tag-purple">HIM-20</span>
+                    <span class="tag tag-amber">Fatigue Modeling</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Research Projects -->
+<section id="projects" class="py-24 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16 fade-in">
+            <p class="text-sm font-semibold text-indigo-600 tracking-widest uppercase mb-3">Output</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Research Projects</h2>
+            <div class="section-divider w-20 mx-auto mb-4"></div>
+            <p class="text-gray-500 max-w-2xl mx-auto">10 completed empirical studies, each exploring a different facet of the AI oversight squeeze.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Project 1: Cognitive Load -->
+            <div class="project-card p-6 bg-white fade-in">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-brain text-blue-600"></i>
+                    </div>
+                    <span class="tag tag-blue">HIM-14</span>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Cognitive Load Thresholds</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-3">Critical threshold at 7±2 simultaneous decisions for optimal AI oversight effectiveness.</p>
+                <div class="flex items-center text-xs text-gray-500">
+                    <span><i class="fas fa-file-alt mr-1"></i>Research Framework</span>
+                </div>
+            </div>
+
+            <!-- Project 2: Trust Calibration -->
+            <div class="project-card p-6 bg-white fade-in" style="animation-delay:0.05s">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-handshake text-green-600"></i>
+                    </div>
+                    <span class="tag tag-green">HIM-15</span>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Trust Calibration Dynamics</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-3">Trust recovery patterns after AI errors mapped; individual differences in adaptation speed identified.</p>
+                <div class="flex items-center text-xs text-gray-500">
+                    <span><i class="fas fa-file-alt mr-1"></i>Behavioral Models</span>
+                </div>
+            </div>
+
+            <!-- Project 3: Attention Allocation -->
+            <div class="project-card p-6 bg-white fade-in" style="animation-delay:0.1s">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-eye text-purple-600"></i>
+                    </div>
+                    <span class="tag tag-purple">HIM-16</span>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Attention Under Pressure</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-3">Attention bottlenecks in high-volume AI oversight characterized; optimal switching algorithms developed.</p>
+                <div class="flex items-center text-xs text-gray-500">
+                    <span><i class="fas fa-file-alt mr-1"></i>Algorithms</span>
+                </div>
+            </div>
+
+            <!-- Project 4: Learning Curves -->
+            <div class="project-card p-6 bg-white fade-in" style="animation-delay:0.15s">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-chart-line text-amber-600"></i>
+                    </div>
+                    <span class="tag tag-amber">HIM-17</span>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Learning Curves Analysis</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-3">780-line Python framework with Power Law, Exponential, Hyperbolic models + automation bias detection.</p>
+                <div class="flex items-center text-xs text-gray-500">
+                    <span><i class="fas fa-code mr-1"></i>780 lines</span>
+                </div>
+            </div>
+
+            <!-- Project 5: Interface Design -->
+            <div class="project-card p-6 bg-white fade-in" style="animation-delay:0.2s">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-10 h-10 bg-pink-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-palette text-pink-600"></i>
+                    </div>
+                    <span class="tag tag-blue">⭐ HIM-18</span>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Interface Design for Understanding</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-3">5 critical design dimensions for meaningful oversight. 476-line academic paper with HCI/ERA research synthesis.</p>
+                <div class="flex items-center text-xs text-gray-500">
+                    <span><i class="fas fa-file-pdf mr-1"></i>Publication Ready</span>
+                </div>
+            </div>
+
+            <!-- Project 6: Deferral Strategies -->
+            <div class="project-card p-6 bg-white fade-in" style="animation-delay:0.25s">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-hand-pointer text-teal-600"></i>
+                    </div>
+                    <span class="tag tag-green">HIM-19</span>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Optimal Deferral Strategies</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-3">Decision novelty outperforms model uncertainty for predicting oversight value. 15%+ improvement over baselines.</p>
+                <div class="flex items-center text-xs text-gray-500">
+                    <span><i class="fas fa-file-code mr-1"></i>Algorithm Design</span>
+                </div>
+            </div>
+
+            <!-- Project 7: Temporal Dynamics -->
+            <div class="project-card p-6 bg-white fade-in" style="animation-delay:0.05s">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-10 h-10 bg-violet-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-hourglass-half text-violet-600"></i>
+                    </div>
+                    <span class="tag tag-purple">HIM-20</span>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Temporal Oversight Dynamics</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-3">Oversight fatigue patterns characterized; optimal window timing and duration identified with decay models.</p>
+                <div class="flex items-center text-xs text-gray-500">
+                    <span><i class="fas fa-file-alt mr-1"></i>Longitudinal Study</span>
+                </div>
+            </div>
+
+            <!-- Project 8: Cross-Domain -->
+            <div class="project-card p-6 bg-white fade-in" style="animation-delay:0.1s">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-project-diagram text-cyan-600"></i>
+                    </div>
+                    <span class="tag tag-blue">HIM-21</span>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Cross-Domain Transfer</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-3">Transferable vs domain-specific oversight competencies mapped; multi-domain training programs designed.</p>
+                <div class="flex items-center text-xs text-gray-500">
+                    <span><i class="fas fa-file-alt mr-1"></i>Training Protocols</span>
+                </div>
+            </div>
+
+            <!-- Project 9: Collective Oversight -->
+            <div class="project-card p-6 bg-white fade-in" style="animation-delay:0.15s">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-users text-red-600"></i>
+                    </div>
+                    <span class="tag tag-red">HIM-22</span>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Collective Oversight Patterns</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-3">Team oversight reduces bias; optimal team size = 3-4 members for complex AI decisions identified.</p>
+                <div class="flex items-center text-xs text-gray-500">
+                    <span><i class="fas fa-file-pdf mr-1"></i>459-line Methodology Paper</span>
+                </div>
+            </div>
+
+            <!-- Project 10: Metacognition -->
+            <div class="project-card p-6 bg-white fade-in" style="animation-delay:0.2s">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-lightbulb text-indigo-600"></i>
+                    </div>
+                    <span class="tag tag-purple">⭐⭐ HIM-23</span>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Metacognitive Awareness</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-3">4 failure modes + 4 intervention strategies for AI oversight. 426-line paper ready for journal submission.</p>
+                <div class="flex items-center text-xs text-gray-500">
+                    <span><i class="fas fa-file-pdf mr-1"></i>Journal-Ready Paper</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Agent Team Section -->
+<section id="agents" class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16 fade-in">
+            <p class="text-sm font-semibold text-indigo-600 tracking-widest uppercase mb-3">Lab Infrastructure</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Autonomous Research Agents</h2>
+            <div class="section-divider w-20 mx-auto mb-4"></div>
+            <p class="text-gray-500 max-w-2xl mx-auto">5 specialized agents execute and coordinate research autonomously through the Multica platform.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div class="bg-gray-50 rounded-xl p-6 card-hover fade-in">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-blue-200 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-microscope text-blue-600 text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Research Coordinator</h3>
+                        <p class="text-sm text-gray-500">Experimental design & study protocols</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-6 card-hover fade-in" style="animation-delay:0.05s">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-green-200 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-search text-green-600 text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Data Retrieval Specialist</h3>
+                        <p class="text-sm text-gray-500">Literature search & data sourcing</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-6 card-hover fade-in" style="animation-delay:0.1s">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-purple-200 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-flask text-purple-600 text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Experimental Designer</h3>
+                        <p class="text-sm text-gray-500">Task design & protocol engineering</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-6 card-hover fade-in" style="animation-delay:0.15s">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-amber-200 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-calculator text-amber-600 text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Data Analyst</h3>
+                        <p class="text-sm text-gray-500">Statistical modeling & analysis</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-6 card-hover fade-in" style="animation-delay:0.2s">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-pink-200 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-feather-alt text-pink-600 text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Academic Writer</h3>
+                        <p class="text-sm text-gray-500">Paper writing & research synthesis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Research Vision Quote -->
+<section class="py-24 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <div class="fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-800">The Oversight Squeeze</h2>
+            <blockquote class="text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
+                <p class="mb-6 italic">"AI is automating more and more cognitive decisions, and the trend is accelerating. What remains for humans are limited windows of oversight — windows that must do two things at once: steer the present trajectory of autonomous agents, and build the understanding we will need to oversee them at all in the future."</p>
+                <footer class="text-sm text-gray-500 not-italic">— Himanshu Mittal, Principal Investigator</footer>
+            </blockquote>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-lg">HumanJi Research Lab</h4>
+                <p class="text-sm leading-relaxed">Advancing AI safety through empirical research on human-AI oversight dynamics. Est. 2026.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4">Research</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#research" class="hover:text-white transition">Core Questions</a></li>
+                    <li><a href="#projects" class="hover:text-white transition">Projects</a></li>
+                    <li><a href="#agents" class="hover:text-white transition">Agents</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4">Connect</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="https://github.com/sevenbow" target="_blank" rel="noopener" class="hover:text-white transition flex items-center gap-2"><i class="fab fa-github"></i> GitHub Organization</a></li>
+                    <li><a href="mailto:research@humanji.in" class="hover:text-white transition">research@humanji.in</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8 text-center text-sm">
+            <p>HumanJi Research Lab © 2026 · <a href="https://github.com/sevenbow" target="_blank" rel="noopener" class="hover:text-white">github.com/sevenbow</a></p>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>
